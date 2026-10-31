@@ -4,7 +4,7 @@
   "emoji": "🎃",
   "level": 2,
   "formatVersion": 1,
-  "description": "A playful Halloween party pack for Kiro Crew. The real Crew mate ghosts dress up as a witch, vampire, cat, mummy, devil, pirate, party ghost and a ghost-in-a-bedsheet. Candy-colored dark and light palettes, Fredoka + Space Mono + Griffy, a witch Crew mate logo, costume loader, a block party behind the chat (smiling moon, string lights, jack-o'-lanterns with trick/treat dev jokes, trick-or-treaters), a dangling Crew mate, a BOO! surprise on switch, an idle peek-a-boo, a topbar with four rotating skits, cheerful sound cues and the Captain Boo persona.",
+  "description": "A playful Halloween party pack for Kiro Crew (0.10 build). The Crew mate ghosts dress up as a witch, vampire, black cat, mummy and Frankenstein, trick-or-treating with candy buckets. Candy-colored dark and light palettes, Fredoka + Space Mono + Griffy, a witch Crew mate logo, a candy loader, a dangling Crew mate, a BOO! surprise on switch, an idle peek-a-boo, a topbar with four rotating skits, cheerful sound cues and the Captain Boo persona.",
   "branding": {
     "botName": "Haunted Crew"
   },
@@ -47,16 +47,6 @@
     }
   ],
   "overlays": [
-    {
-      "id": "party",
-      "src": "overlays/party.html",
-      "position": "fullscreen",
-      "layer": "behind",
-      "zIndex": 1,
-      "pointerEvents": false,
-      "animation": "continuous",
-      "trigger": "continuous"
-    },
     {
       "id": "dangle",
       "src": "overlays/dangle.html",
