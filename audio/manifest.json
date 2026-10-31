@@ -1,0 +1,35 @@
+{
+  "triggers": {
+    "activate": {
+      "src": "audio/activate.wav",
+      "volume": 0.45,
+      "maxDuration": 3
+    },
+    "deactivate": {
+      "src": "audio/deactivate.wav",
+      "volume": 0.35,
+      "maxDuration": 2
+    },
+    "message-sent": {
+      "src": "audio/message-sent.wav",
+      "volume": 0.3,
+      "maxDuration": 1
+    },
+    "message-received": {
+      "src": "audio/message-received.wav",
+      "volume": 0.35,
+      "maxDuration": 1
+    },
+    "notification": {
+      "src": "audio/notification.wav",
+      "volume": 0.4,
+      "maxDuration": 2
+    },
+    "error": {
+      "src": "audio/error.wav",
+      "volume": 0.4,
+      "maxDuration": 2
+    }
+  },
+  "ambient": null
+}

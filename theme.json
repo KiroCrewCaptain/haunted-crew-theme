@@ -1,0 +1,109 @@
+{
+  "slug": "haunted-crew",
+  "name": "Haunted Crew",
+  "emoji": "🎃",
+  "level": 2,
+  "formatVersion": 1,
+  "description": "A playful Halloween party pack for Kiro Crew. The real Crew mate ghosts dress up as a witch, vampire, cat, mummy, devil, pirate, party ghost and a ghost-in-a-bedsheet. Candy-colored dark and light palettes, Fredoka + Space Mono + Griffy, a witch Crew mate logo, costume loader, a block party behind the chat (smiling moon, string lights, jack-o'-lanterns with trick/treat dev jokes, trick-or-treaters), a dangling Crew mate, a BOO! surprise on switch, an idle peek-a-boo, a topbar with four rotating skits, cheerful sound cues and the Captain Boo persona.",
+  "branding": {
+    "botName": "Haunted Crew"
+  },
+  "fonts": [
+    {
+      "family": "Fredoka",
+      "file": "fredoka-vf.ttf",
+      "weight": 400,
+      "role": "sans"
+    },
+    {
+      "family": "Fredoka",
+      "file": "fredoka-vf.ttf",
+      "weight": 500,
+      "role": "sans"
+    },
+    {
+      "family": "Fredoka",
+      "file": "fredoka-vf.ttf",
+      "weight": 600,
+      "role": "sans"
+    },
+    {
+      "family": "Griffy",
+      "file": "griffy-400.ttf",
+      "weight": 400,
+      "role": "sans"
+    },
+    {
+      "family": "Space Mono",
+      "file": "spacemono-400.ttf",
+      "weight": 400,
+      "role": "mono"
+    },
+    {
+      "family": "Space Mono",
+      "file": "spacemono-700.ttf",
+      "weight": 700,
+      "role": "mono"
+    }
+  ],
+  "overlays": [
+    {
+      "id": "party",
+      "src": "overlays/party.html",
+      "position": "fullscreen",
+      "layer": "behind",
+      "zIndex": 1,
+      "pointerEvents": false,
+      "animation": "continuous",
+      "trigger": "continuous"
+    },
+    {
+      "id": "dangle",
+      "src": "overlays/dangle.html",
+      "position": "top-right",
+      "zIndex": 40,
+      "pointerEvents": false,
+      "animation": "continuous",
+      "trigger": "continuous"
+    },
+    {
+      "id": "summon",
+      "src": "overlays/summon.html",
+      "position": "fullscreen",
+      "zIndex": 45,
+      "pointerEvents": false,
+      "animation": "once",
+      "trigger": "activate"
+    },
+    {
+      "id": "peekaboo",
+      "src": "overlays/peekaboo.html",
+      "position": "bottom-right",
+      "zIndex": 42,
+      "pointerEvents": false,
+      "animation": "once",
+      "trigger": "idle-90s"
+    },
+    {
+      "id": "boo-again",
+      "src": "overlays/boo-again.html",
+      "position": "fullscreen",
+      "zIndex": 45,
+      "pointerEvents": false,
+      "animation": "continuous",
+      "trigger": "continuous"
+    }
+  ],
+  "topbar": {
+    "dark": "topbar/dark.html",
+    "light": "topbar/light.html",
+    "height": "44px",
+    "hideOnMobile": true
+  },
+  "audio": {
+    "manifest": "audio/manifest.json",
+    "maxBootDuration": 3,
+    "respectMute": true
+  },
+  "persona": "persona.md"
+}

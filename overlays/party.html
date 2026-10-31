@@ -1,0 +1,291 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  html, body { margin: 0; height: 100%; overflow: hidden; background: transparent; }
+  canvas { display: block; width: 100%; height: 100%; }
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<script>
+// Haunted Crew: the Crew's Halloween block party, painted BEHIND the chat.
+// A smiling moon with Kiro eyes, twinkling string lights, a pumpkin patch of
+// jack-o'-lanterns carved with Crew faces holding trick/treat signs, Crew mates
+// in costumes going trick-or-treating, a witch ghost flying by on a broom, and
+// friendly bats. Inline canvas only: no network, no storage.
+(function () {
+  var G = {"witch": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%22120%2020%201080%201080%22%3E%3Cfilter%20id%3D%22rim%22%20x%3D%22-15%25%22%20y%3D%22-15%25%22%20width%3D%22130%25%22%20height%3D%22130%25%22%3E%3CfeMorphology%20in%3D%22SourceAlpha%22%20operator%3D%22dilate%22%20radius%3D%2216%22%20result%3D%22d%22/%3E%3CfeFlood%20flood-color%3D%22%23efe6ff%22/%3E%3CfeComposite%20in2%3D%22d%22%20operator%3D%22in%22%20result%3D%22r%22/%3E%3CfeMerge%3E%3CfeMergeNode%20in%3D%22r%22/%3E%3CfeMergeNode%20in%3D%22SourceGraphic%22/%3E%3C/feMerge%3E%3C/filter%3E%3Cg%20filter%3D%22url%28%23rim%29%22%3E%3Cpath%20d%3D%22M398.554%20818.914C316.315%201001.03%20491.477%201046.74%20620.672%20940.156C658.687%201059.66%20801.052%20970.473%20852.234%20877.795C964.787%20673.567%20919.318%20465.357%20907.64%20422.374C827.637%20129.443%20427.623%20128.946%20358.8%20423.865C342.651%20475.544%20342.402%20534.18%20333.458%20595.051C328.986%20625.86%20325.507%20645.488%20313.83%20677.785C306.873%20696.424%20297.68%20712.819%20282.773%20740.645C259.915%20783.881%20269.604%20867.113%20387.87%20823.883L399.051%20818.914H398.554Z%22%20fill%3D%22%23ffffff%22%20stroke%3D%22%231b1030%22%20stroke-width%3D%2244%22%20stroke-linejoin%3D%22round%22/%3E%3Cellipse%20cx%3D%22617.5%22%20cy%3D%22600%22%20rx%3D%2246%22%20ry%3D%2226%22%20fill%3D%22%23ff7a9c%22%20opacity%3D%220.6%22/%3E%3Cellipse%20cx%3D%22806.6%22%20cy%3D%22600%22%20rx%3D%2246%22%20ry%3D%2226%22%20fill%3D%22%23ff7a9c%22%20opacity%3D%220.6%22/%3E%3Cpath%20d%3D%22M636.123%20549.353C603.328%20549.353%20598.359%20510.097%20598.359%20486.742C598.359%20465.623%20602.086%20448.977%20609.293%20438.293C615.504%20428.852%20624.697%20424.131%20636.123%20424.131C647.555%20424.131%20657.492%20428.852%20664.447%20438.541C672.398%20449.474%20676.623%20466.12%20676.623%20486.742C676.623%20525.998%20661.471%20549.353%20636.375%20549.353H636.123Z%22%20fill%3D%22%231b1030%22/%3E%3Cpath%20d%3D%22M771.24%20549.353C738.445%20549.353%20733.477%20510.097%20733.477%20486.742C733.477%20465.623%20737.203%20448.977%20744.41%20438.293C750.621%20428.852%20759.814%20424.131%20771.24%20424.131C782.672%20424.131%20792.609%20428.852%20799.564%20438.541C807.516%20449.474%20811.74%20466.12%20811.74%20486.742C811.74%20525.998%20796.588%20549.353%20771.492%20549.353H771.24Z%22%20fill%3D%22%231b1030%22/%3E%3Cpath%20d%3D%22M660%20622q45%2042%2090%200%22%20stroke%3D%22%231b1030%22%20stroke-width%3D%2226%22%20fill%3D%22none%22%20stroke-linecap%3D%22round%22/%3E%3Cpath%20d%3D%22M300%20318q330-120%20680%20-6q-30%2060-340%2062q-300%200-340-56z%22%20fill%3D%22%235b2bb5%22%20stroke%3D%22%231b1030%22%20stroke-width%3D%2222%22%20stroke-linejoin%3D%22round%22%20stroke-linecap%3D%22round%22/%3E%3Cpath%20d%3D%22M470%20318q40-170%20150-250q60-40%20120%2010q-40%20-6-60%2030q-20%2050%2020%20210z%22%20fill%3D%22%239046ff%22%20stroke%3D%22%231b1030%22%20stroke-width%3D%2222%22%20stroke-linejoin%3D%22round%22%20stroke-linecap%3D%22round%22/%3E%3Cpath%20d%3D%22M462%20300q160%2034%20290%20-2l-6%20-52q-136%2030-276%200z%22%20fill%3D%22%23ff8a1f%22%20stroke%3D%22%231b1030%22%20stroke-width%3D%2216%22%20stroke-linejoin%3D%22round%22%20stroke-linecap%3D%22round%22/%3E%3Crect%20x%3D%22576%22%20y%3D%22252%22%20width%3D%2256%22%20height%3D%2250%22%20rx%3D%228%22%20fill%3D%22none%22%20stroke%3D%22%23ffd23f%22%20stroke-width%3D%2216%22/%3E%3Cg%20transform%3D%22translate%28900%20780%29%22%3E%3Cpath%20d%3D%22M-110%20-40q110%20-180%20220%200%22%20fill%3D%22none%22%20stroke%3D%22%231b1030%22%20stroke-width%3D%2220%22/%3E%3Cellipse%20cx%3D%22-50%22%20cy%3D%2240%22%20rx%3D%2280%22%20ry%3D%2296%22%20fill%3D%22%23e5600b%22%20stroke%3D%22%231b1030%22%20stroke-width%3D%2218%22%20stroke-linejoin%3D%22round%22%20stroke-linecap%3D%22round%22/%3E%3Cellipse%20cx%3D%2250%22%20cy%3D%2240%22%20rx%3D%2280%22%20ry%3D%2296%22%20fill%3D%22%23e5600b%22%20stroke%3D%22%231b1030%22%20stroke-width%3D%2218%22%20stroke-linejoin%3D%22round%22%20stroke-linecap%3D%22round%22/%3E%3Cellipse%20cx%3D%220%22%20cy%3D%2240%22%20rx%3D%2284%22%20ry%3D%22104%22%20fill%3D%22%23ff8a1f%22%20stroke%3D%22%231b1030%22%20stroke-width%3D%2218%22%20stroke-linejoin%3D%22round%22%20stroke-linecap%3D%22round%22/%3E%3Cpath%20d%3D%22M-46%2018l22%20-34%2022%2034zM10%2018l22%20-34%2022%2034z%22%20fill%3D%22%231b1030%22/%3E%3Cpath%20d%3D%22M-50%2066q50%2040%20100%200q-50%2020-100%200z%22%20fill%3D%22%231b1030%22/%3E%3Ccircle%20cx%3D%22-30%22%20cy%3D%22-58%22%20r%3D%2218%22%20fill%3D%22%239046ff%22%20stroke%3D%22%231b1030%22%20stroke-width%3D%2210%22%20stroke-linejoin%3D%22round%22%20stroke-linecap%3D%22round%22/%3E%3Ccircle%20cx%3D%2218%22%20cy%3D%22-66%22%20r%3D%2218%22%20fill%3D%22%23a3e635%22%20stroke%3D%22%231b1030%22%20stroke-width%3D%2210%22%20stroke-linejoin%3D%22round%22%20stroke-linecap%3D%22round%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E", "vampire": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%22120%2020%201080%201080%22%3E%3Cfilter%20id%3D%22rim%22%20x%3D%22-15%25%22%20y%3D%22-15%25%22%20width%3D%22130%25%22%20height%3D%22130%25%22%3E%3CfeMorphology%20in%3D%22SourceAlpha%22%20operator%3D%22dilate%22%20radius%3D%2216%22%20result%3D%22d%22/%3E%3CfeFlood%20flood-color%3D%22%23efe6ff%22/%3E%3CfeComposite%20in2%3D%22d%22%20operator%3D%22in%22%20result%3D%22r%22/%3E%3CfeMerge%3E%3CfeMergeNode%20in%3D%22r%22/%3E%3CfeMergeNode%20in%3D%22SourceGraphic%22/%3E%3C/feMerge%3E%3C/filter%3E%3Cg%20filter%3D%22url%28%23rim%29%22%3E%3Cpath%20d%3D%22M330%20720l-110%20-150%2040%20210z%22%20fill%3D%22%23ff4d6d%22%20stroke%3D%22%231b1030%22%20stroke-width%3D%2218%22%20stroke-linejoin%3D%22round%22%20stroke-linecap%3D%22round%22/%3E%3Cpath%20d%3D%22M930%20700l130%20-170%20-20%20230z%22%20fill%3D%22%23ff4d6d%22%20stroke%3D%22%231b1030%22%20stroke-width%3D%2218%22%20stroke-linejoin%3D%22round%22%20stroke-linecap%3D%22round%22/%3E%3Cpath%20d%3D%22M398.554%20818.914C316.315%201001.03%20491.477%201046.74%20620.672%20940.156C658.687%201059.66%20801.052%20970.473%20852.234%20877.795C964.787%20673.567%20919.318%20465.357%20907.64%20422.374C827.637%20129.443%20427.623%20128.946%20358.8%20423.865C342.651%20475.544%20342.402%20534.18%20333.458%20595.051C328.986%20625.86%20325.507%20645.488%20313.83%20677.785C306.873%20696.424%20297.68%20712.819%20282.773%20740.645C259.915%20783.881%20269.604%20867.113%20387.87%20823.883L399.051%20818.914H398.554Z%22%20fill%3D%22%23ffffff%22%20stroke%3D%22%231b1030%22%20stroke-width%3D%2244%22%20stroke-linejoin%3D%22round%22/%3E%3Cpath%20d%3D%22M370%20380q-10-200%20260-196q270%204%20260%20210q-80-70-160-60l-100%2080-100-80q-90-10-160%2046z%22%20fill%3D%22%231b1030%22/%3E%3Cpath%20d%3D%22M636.123%20549.353C603.328%20549.353%20598.359%20510.097%20598.359%20486.742C598.359%20465.623%20602.086%20448.977%20609.293%20438.293C615.504%20428.852%20624.697%20424.131%20636.123%20424.131C647.555%20424.131%20657.492%20428.852%20664.447%20438.541C672.398%20449.474%20676.623%20466.12%20676.623%20486.742C676.623%20525.998%20661.471%20549.353%20636.375%20549.353H636.123Z%22%20fill%3D%22%231b1030%22/%3E%3Cpath%20d%3D%22M771.24%20549.353C738.445%20549.353%20733.477%20510.097%20733.477%20486.742C733.477%20465.623%20737.203%20448.977%20744.41%20438.293C750.621%20428.852%20759.814%20424.131%20771.24%20424.131C782.672%20424.131%20792.609%20428.852%20799.564%20438.541C807.516%20449.474%20811.74%20466.12%20811.74%20486.742C811.74%20525.998%20796.588%20549.353%20771.492%20549.353H771.24Z%22%20fill%3D%22%231b1030%22/%3E%3Cpath%20d%3D%22M650%20606q55%2056%20110%200z%22%20fill%3D%22%231b1030%22/%3E%3Cpath%20d%3D%22M668%20610l12%2040%2012-40zM718%20610l12%2040%2012-40z%22%20fill%3D%22%23ffffff%22/%3E%3C/g%3E%3C/svg%3E", "cat": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%22120%2020%201080%201080%22%3E%3Cfilter%20id%3D%22rim%22%20x%3D%22-15%25%22%20y%3D%22-15%25%22%20width%3D%22130%25%22%20height%3D%22130%25%22%3E%3CfeMorphology%20in%3D%22SourceAlpha%22%20operator%3D%22dilate%22%20radius%3D%2216%22%20result%3D%22d%22/%3E%3CfeFlood%20flood-color%3D%22%23efe6ff%22/%3E%3CfeComposite%20in2%3D%22d%22%20operator%3D%22in%22%20result%3D%22r%22/%3E%3CfeMerge%3E%3CfeMergeNode%20in%3D%22r%22/%3E%3CfeMergeNode%20in%3D%22SourceGraphic%22/%3E%3C/feMerge%3E%3C/filter%3E%3Cg%20filter%3D%22url%28%23rim%29%22%3E%3Cpath%20d%3D%22M398.554%20818.914C316.315%201001.03%20491.477%201046.74%20620.672%20940.156C658.687%201059.66%20801.052%20970.473%20852.234%20877.795C964.787%20673.567%20919.318%20465.357%20907.64%20422.374C827.637%20129.443%20427.623%20128.946%20358.8%20423.865C342.651%20475.544%20342.402%20534.18%20333.458%20595.051C328.986%20625.86%20325.507%20645.488%20313.83%20677.785C306.873%20696.424%20297.68%20712.819%20282.773%20740.645C259.915%20783.881%20269.604%20867.113%20387.87%20823.883L399.051%20818.914H398.554Z%22%20fill%3D%22%23ffffff%22%20stroke%3D%22%231b1030%22%20stroke-width%3D%2244%22%20stroke-linejoin%3D%22round%22/%3E%3Cellipse%20cx%3D%22617.5%22%20cy%3D%22600%22%20rx%3D%2246%22%20ry%3D%2226%22%20fill%3D%22%23ff7a9c%22%20opacity%3D%220.6%22/%3E%3Cellipse%20cx%3D%22806.6%22%20cy%3D%22600%22%20rx%3D%2246%22%20ry%3D%2226%22%20fill%3D%22%23ff7a9c%22%20opacity%3D%220.6%22/%3E%3Cpath%20d%3D%22M636.123%20549.353C603.328%20549.353%20598.359%20510.097%20598.359%20486.742C598.359%20465.623%20602.086%20448.977%20609.293%20438.293C615.504%20428.852%20624.697%20424.131%20636.123%20424.131C647.555%20424.131%20657.492%20428.852%20664.447%20438.541C672.398%20449.474%20676.623%20466.12%20676.623%20486.742C676.623%20525.998%20661.471%20549.353%20636.375%20549.353H636.123Z%22%20fill%3D%22%231b1030%22/%3E%3Cpath%20d%3D%22M771.24%20549.353C738.445%20549.353%20733.477%20510.097%20733.477%20486.742C733.477%20465.623%20737.203%20448.977%20744.41%20438.293C750.621%20428.852%20759.814%20424.131%20771.24%20424.131C782.672%20424.131%20792.609%20428.852%20799.564%20438.541C807.516%20449.474%20811.74%20466.12%20811.74%20486.742C811.74%20525.998%20796.588%20549.353%20771.492%20549.353H771.24Z%22%20fill%3D%22%231b1030%22/%3E%3Cpath%20d%3D%22M690%20584h30l-15%2018z%22%20fill%3D%22%23ff7a9c%22%20stroke%3D%22%231b1030%22%20stroke-width%3D%2210%22%20stroke-linejoin%3D%22round%22%20stroke-linecap%3D%22round%22/%3E%3Cpath%20d%3D%22M662%20622q22%2030%2043%200q22%2030%2043%200%22%20stroke%3D%22%231b1030%22%20stroke-width%3D%2222%22%20fill%3D%22none%22%20stroke-linecap%3D%22round%22/%3E%3Cpath%20d%3D%22M600%20590L500%20570%22%20stroke%3D%22%231b1030%22%20stroke-width%3D%2212%22%20stroke-linecap%3D%22round%22/%3E%3Cpath%20d%3D%22M600%20612L500%20624%22%20stroke%3D%22%231b1030%22%20stroke-width%3D%2212%22%20stroke-linecap%3D%22round%22/%3E%3Cpath%20d%3D%22M810%20590L910%20570%22%20stroke%3D%22%231b1030%22%20stroke-width%3D%2212%22%20stroke-linecap%3D%22round%22/%3E%3Cpath%20d%3D%22M810%20612L910%20624%22%20stroke%3D%22%231b1030%22%20stroke-width%3D%2212%22%20stroke-linecap%3D%22round%22/%3E%3Cpath%20d%3D%22M440%20330l20%20-190%20140%20120z%22%20fill%3D%22%231b1030%22/%3E%3Cpath%20d%3D%22M470%20300l12%20-110%2080%2072z%22%20fill%3D%22%23ff7a9c%22/%3E%3Cpath%20d%3D%22M830%20316l-10%20-190%20-140%20110z%22%20fill%3D%22%231b1030%22/%3E%3Cpath%20d%3D%22M800%20290l-6%20-110%20-82%2066z%22%20fill%3D%22%23ff7a9c%22/%3E%3Cg%20transform%3D%22translate%28930%20760%29%20rotate%28-20%29%22%3E%3Crect%20x%3D%22-60%22%20y%3D%22-34%22%20width%3D%22120%22%20height%3D%2268%22%20rx%3D%2230%22%20fill%3D%22%23a3e635%22%20stroke%3D%22%231b1030%22%20stroke-width%3D%2216%22%20stroke-linejoin%3D%22round%22%20stroke-linecap%3D%22round%22/%3E%3Cpath%20d%3D%22M-60%200l-60%20-40v80zM60%200l60%20-40v80z%22%20fill%3D%22%23a3e635%22%20stroke%3D%22%231b1030%22%20stroke-width%3D%2216%22%20stroke-linejoin%3D%22round%22%20stroke-linecap%3D%22round%22/%3E%3Cpath%20d%3D%22M-24%20-30l-20%2060M10%20-30l-20%2060M44%20-30l-20%2060%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%2210%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E", "devil": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%22120%2020%201080%201080%22%3E%3Cfilter%20id%3D%22rim%22%20x%3D%22-15%25%22%20y%3D%22-15%25%22%20width%3D%22130%25%22%20height%3D%22130%25%22%3E%3CfeMorphology%20in%3D%22SourceAlpha%22%20operator%3D%22dilate%22%20radius%3D%2216%22%20result%3D%22d%22/%3E%3CfeFlood%20flood-color%3D%22%23efe6ff%22/%3E%3CfeComposite%20in2%3D%22d%22%20operator%3D%22in%22%20result%3D%22r%22/%3E%3CfeMerge%3E%3CfeMergeNode%20in%3D%22r%22/%3E%3CfeMergeNode%20in%3D%22SourceGraphic%22/%3E%3C/feMerge%3E%3C/filter%3E%3Cg%20filter%3D%22url%28%23rim%29%22%3E%3Cpath%20d%3D%22M300%20900q-150%2040-120%20-90%22%20fill%3D%22none%22%20stroke%3D%22%23ff4d6d%22%20stroke-width%3D%2222%22%20stroke-linecap%3D%22round%22/%3E%3Cpath%20d%3D%22M150%20800l30%20-70%2040%2060z%22%20fill%3D%22%23ff4d6d%22/%3E%3Cpath%20d%3D%22M398.554%20818.914C316.315%201001.03%20491.477%201046.74%20620.672%20940.156C658.687%201059.66%20801.052%20970.473%20852.234%20877.795C964.787%20673.567%20919.318%20465.357%20907.64%20422.374C827.637%20129.443%20427.623%20128.946%20358.8%20423.865C342.651%20475.544%20342.402%20534.18%20333.458%20595.051C328.986%20625.86%20325.507%20645.488%20313.83%20677.785C306.873%20696.424%20297.68%20712.819%20282.773%20740.645C259.915%20783.881%20269.604%20867.113%20387.87%20823.883L399.051%20818.914H398.554Z%22%20fill%3D%22%23ffffff%22%20stroke%3D%22%231b1030%22%20stroke-width%3D%2244%22%20stroke-linejoin%3D%22round%22/%3E%3Cellipse%20cx%3D%22617.5%22%20cy%3D%22600%22%20rx%3D%2246%22%20ry%3D%2226%22%20fill%3D%22%23ff7a9c%22%20opacity%3D%220.6%22/%3E%3Cellipse%20cx%3D%22806.6%22%20cy%3D%22600%22%20rx%3D%2246%22%20ry%3D%2226%22%20fill%3D%22%23ff7a9c%22%20opacity%3D%220.6%22/%3E%3Cpath%20d%3D%22M636.123%20549.353C603.328%20549.353%20598.359%20510.097%20598.359%20486.742C598.359%20465.623%20602.086%20448.977%20609.293%20438.293C615.504%20428.852%20624.697%20424.131%20636.123%20424.131C647.555%20424.131%20657.492%20428.852%20664.447%20438.541C672.398%20449.474%20676.623%20466.12%20676.623%20486.742C676.623%20525.998%20661.471%20549.353%20636.375%20549.353H636.123Z%22%20fill%3D%22%231b1030%22/%3E%3Cpath%20d%3D%22M728.6%20512.7q44%20-52%2088%200%22%20stroke%3D%22%231b1030%22%20stroke-width%3D%2230%22%20fill%3D%22none%22%20stroke-linecap%3D%22round%22/%3E%3Cpath%20d%3D%22M652%20606q53%2082%20106%200Z%22%20fill%3D%22%231b1030%22/%3E%3Cpath%20d%3D%22M688%20648q17%2030%2034%200Z%22%20fill%3D%22%23ff7a9c%22/%3E%3Cpath%20d%3D%22M470%20300q-90-60-60-180q40%2080%20130%20120z%22%20fill%3D%22%23ff4d6d%22%20stroke%3D%22%231b1030%22%20stroke-width%3D%2218%22%20stroke-linejoin%3D%22round%22%20stroke-linecap%3D%22round%22/%3E%3Cpath%20d%3D%22M800%20292q100-50%2080-180q-50%2080-140%20116z%22%20fill%3D%22%23ff4d6d%22%20stroke%3D%22%231b1030%22%20stroke-width%3D%2218%22%20stroke-linejoin%3D%22round%22%20stroke-linecap%3D%22round%22/%3E%3Cpath%20d%3D%22M960%201000L1020%20520%22%20stroke%3D%22%231b1030%22%20stroke-width%3D%2226%22%20stroke-linecap%3D%22round%22/%3E%3Cpath%20d%3D%22M960%20540q60%2030%20120%200M960%20540l-6%20-90M1020%20545l4%20-100M1080%20540l10%20-88%22%20fill%3D%22none%22%20stroke%3D%22%23ff4d6d%22%20stroke-width%3D%2222%22%20stroke-linecap%3D%22round%22/%3E%3C/g%3E%3C/svg%3E", "mummy": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%22120%2020%201080%201080%22%3E%3Cfilter%20id%3D%22rim%22%20x%3D%22-15%25%22%20y%3D%22-15%25%22%20width%3D%22130%25%22%20height%3D%22130%25%22%3E%3CfeMorphology%20in%3D%22SourceAlpha%22%20operator%3D%22dilate%22%20radius%3D%2216%22%20result%3D%22d%22/%3E%3CfeFlood%20flood-color%3D%22%23efe6ff%22/%3E%3CfeComposite%20in2%3D%22d%22%20operator%3D%22in%22%20result%3D%22r%22/%3E%3CfeMerge%3E%3CfeMergeNode%20in%3D%22r%22/%3E%3CfeMergeNode%20in%3D%22SourceGraphic%22/%3E%3C/feMerge%3E%3C/filter%3E%3Cg%20filter%3D%22url%28%23rim%29%22%3E%3Cpath%20d%3D%22M398.554%20818.914C316.315%201001.03%20491.477%201046.74%20620.672%20940.156C658.687%201059.66%20801.052%20970.473%20852.234%20877.795C964.787%20673.567%20919.318%20465.357%20907.64%20422.374C827.637%20129.443%20427.623%20128.946%20358.8%20423.865C342.651%20475.544%20342.402%20534.18%20333.458%20595.051C328.986%20625.86%20325.507%20645.488%20313.83%20677.785C306.873%20696.424%20297.68%20712.819%20282.773%20740.645C259.915%20783.881%20269.604%20867.113%20387.87%20823.883L399.051%20818.914H398.554Z%22%20fill%3D%22%23ffffff%22%20stroke%3D%22%231b1030%22%20stroke-width%3D%2244%22%20stroke-linejoin%3D%22round%22/%3E%3CclipPath%20id%3D%22mb%22%3E%3Cpath%20d%3D%22M398.554%20818.914C316.315%201001.03%20491.477%201046.74%20620.672%20940.156C658.687%201059.66%20801.052%20970.473%20852.234%20877.795C964.787%20673.567%20919.318%20465.357%20907.64%20422.374C827.637%20129.443%20427.623%20128.946%20358.8%20423.865C342.651%20475.544%20342.402%20534.18%20333.458%20595.051C328.986%20625.86%20325.507%20645.488%20313.83%20677.785C306.873%20696.424%20297.68%20712.819%20282.773%20740.645C259.915%20783.881%20269.604%20867.113%20387.87%20823.883L399.051%20818.914H398.554Z%22/%3E%3C/clipPath%3E%3Cg%20clip-path%3D%22url%28%23mb%29%22%3E%3Cpath%20d%3D%22M180%20330L1080%20266%22%20stroke%3D%22%23e9e2d0%22%20stroke-width%3D%2254%22/%3E%3Cpath%20d%3D%22M180%20356L1080%20292%22%20stroke%3D%22%23c9bfa6%22%20stroke-width%3D%226%22/%3E%3Cpath%20d%3D%22M180%20420L1080%20468%22%20stroke%3D%22%23e9e2d0%22%20stroke-width%3D%2254%22/%3E%3Cpath%20d%3D%22M180%20446L1080%20494%22%20stroke%3D%22%23c9bfa6%22%20stroke-width%3D%226%22/%3E%3Cpath%20d%3D%22M180%20560L1080%20520%22%20stroke%3D%22%23e9e2d0%22%20stroke-width%3D%2254%22/%3E%3Cpath%20d%3D%22M180%20586L1080%20546%22%20stroke%3D%22%23c9bfa6%22%20stroke-width%3D%226%22/%3E%3Cpath%20d%3D%22M180%20660L1080%20716%22%20stroke%3D%22%23e9e2d0%22%20stroke-width%3D%2254%22/%3E%3Cpath%20d%3D%22M180%20686L1080%20742%22%20stroke%3D%22%23c9bfa6%22%20stroke-width%3D%226%22/%3E%3Cpath%20d%3D%22M180%20760L1080%20712%22%20stroke%3D%22%23e9e2d0%22%20stroke-width%3D%2254%22/%3E%3Cpath%20d%3D%22M180%20786L1080%20738%22%20stroke%3D%22%23c9bfa6%22%20stroke-width%3D%226%22/%3E%3Cpath%20d%3D%22M180%20860L1080%20900%22%20stroke%3D%22%23e9e2d0%22%20stroke-width%3D%2254%22/%3E%3Cpath%20d%3D%22M180%20886L1080%20926%22%20stroke%3D%22%23c9bfa6%22%20stroke-width%3D%226%22/%3E%3C/g%3E%3Cpath%20d%3D%22M398.554%20818.914C316.315%201001.03%20491.477%201046.74%20620.672%20940.156C658.687%201059.66%20801.052%20970.473%20852.234%20877.795C964.787%20673.567%20919.318%20465.357%20907.64%20422.374C827.637%20129.443%20427.623%20128.946%20358.8%20423.865C342.651%20475.544%20342.402%20534.18%20333.458%20595.051C328.986%20625.86%20325.507%20645.488%20313.83%20677.785C306.873%20696.424%20297.68%20712.819%20282.773%20740.645C259.915%20783.881%20269.604%20867.113%20387.87%20823.883L399.051%20818.914H398.554Z%22%20fill%3D%22none%22%20stroke%3D%22%231b1030%22%20stroke-width%3D%2244%22%20stroke-linejoin%3D%22round%22%20stroke-linecap%3D%22round%22/%3E%3Cpath%20d%3D%22M636.123%20549.353C603.328%20549.353%20598.359%20510.097%20598.359%20486.742C598.359%20465.623%20602.086%20448.977%20609.293%20438.293C615.504%20428.852%20624.697%20424.131%20636.123%20424.131C647.555%20424.131%20657.492%20428.852%20664.447%20438.541C672.398%20449.474%20676.623%20466.12%20676.623%20486.742C676.623%20525.998%20661.471%20549.353%20636.375%20549.353H636.123Z%22%20fill%3D%22%231b1030%22/%3E%3Cpath%20d%3D%22M771.24%20549.353C738.445%20549.353%20733.477%20510.097%20733.477%20486.742C733.477%20465.623%20737.203%20448.977%20744.41%20438.293C750.621%20428.852%20759.814%20424.131%20771.24%20424.131C782.672%20424.131%20792.609%20428.852%20799.564%20438.541C807.516%20449.474%20811.74%20466.12%20811.74%20486.742C811.74%20525.998%20796.588%20549.353%20771.492%20549.353H771.24Z%22%20fill%3D%22%231b1030%22/%3E%3Cellipse%20cx%3D%22705%22%20cy%3D%22628%22%20rx%3D%2230%22%20ry%3D%2238%22%20fill%3D%22%231b1030%22/%3E%3C/g%3E%3C/svg%3E", "pirate": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%22120%2020%201080%201080%22%3E%3Cfilter%20id%3D%22rim%22%20x%3D%22-15%25%22%20y%3D%22-15%25%22%20width%3D%22130%25%22%20height%3D%22130%25%22%3E%3CfeMorphology%20in%3D%22SourceAlpha%22%20operator%3D%22dilate%22%20radius%3D%2216%22%20result%3D%22d%22/%3E%3CfeFlood%20flood-color%3D%22%23efe6ff%22/%3E%3CfeComposite%20in2%3D%22d%22%20operator%3D%22in%22%20result%3D%22r%22/%3E%3CfeMerge%3E%3CfeMergeNode%20in%3D%22r%22/%3E%3CfeMergeNode%20in%3D%22SourceGraphic%22/%3E%3C/feMerge%3E%3C/filter%3E%3Cg%20filter%3D%22url%28%23rim%29%22%3E%3Cpath%20d%3D%22M398.554%20818.914C316.315%201001.03%20491.477%201046.74%20620.672%20940.156C658.687%201059.66%20801.052%20970.473%20852.234%20877.795C964.787%20673.567%20919.318%20465.357%20907.64%20422.374C827.637%20129.443%20427.623%20128.946%20358.8%20423.865C342.651%20475.544%20342.402%20534.18%20333.458%20595.051C328.986%20625.86%20325.507%20645.488%20313.83%20677.785C306.873%20696.424%20297.68%20712.819%20282.773%20740.645C259.915%20783.881%20269.604%20867.113%20387.87%20823.883L399.051%20818.914H398.554Z%22%20fill%3D%22%23ffffff%22%20stroke%3D%22%231b1030%22%20stroke-width%3D%2244%22%20stroke-linejoin%3D%22round%22/%3E%3Cellipse%20cx%3D%22617.5%22%20cy%3D%22600%22%20rx%3D%2246%22%20ry%3D%2226%22%20fill%3D%22%23ff7a9c%22%20opacity%3D%220.6%22/%3E%3Cellipse%20cx%3D%22806.6%22%20cy%3D%22600%22%20rx%3D%2246%22%20ry%3D%2226%22%20fill%3D%22%23ff7a9c%22%20opacity%3D%220.6%22/%3E%3Cpath%20d%3D%22M420%20400L900%20520%22%20stroke%3D%22%231b1030%22%20stroke-width%3D%2216%22/%3E%3Cellipse%20cx%3D%22772.6%22%20cy%3D%22486.7%22%20rx%3D%2264%22%20ry%3D%2258%22%20fill%3D%22%231b1030%22/%3E%3Cpath%20d%3D%22M636.123%20549.353C603.328%20549.353%20598.359%20510.097%20598.359%20486.742C598.359%20465.623%20602.086%20448.977%20609.293%20438.293C615.504%20428.852%20624.697%20424.131%20636.123%20424.131C647.555%20424.131%20657.492%20428.852%20664.447%20438.541C672.398%20449.474%20676.623%20466.12%20676.623%20486.742C676.623%20525.998%20661.471%20549.353%20636.375%20549.353H636.123Z%22%20fill%3D%22%231b1030%22/%3E%3Cpath%20d%3D%22M660%20622q45%2042%2090%200%22%20stroke%3D%22%231b1030%22%20stroke-width%3D%2226%22%20fill%3D%22none%22%20stroke-linecap%3D%22round%22/%3E%3Cpath%20d%3D%22M300%20340q330-260%20680%200q-160%20-50-340%20-40q-180-10-340%2040z%22%20fill%3D%22%231b1030%22/%3E%3Ccircle%20cx%3D%22640%22%20cy%3D%22218%22%20r%3D%2234%22%20fill%3D%22%23ffffff%22/%3E%3Cpath%20d%3D%22M620%20240h40%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%2212%22/%3E%3Cpath%20d%3D%22M590%20270l100%20-30M590%20240l100%2030%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%2210%22%20stroke-linecap%3D%22round%22/%3E%3Cpath%20d%3D%22M930%20760v60q0%2070%2060%2070t60%20-60%22%20fill%3D%22none%22%20stroke%3D%22%239aa3b5%22%20stroke-width%3D%2226%22%20stroke-linecap%3D%22round%22/%3E%3C/g%3E%3C/svg%3E", "sheet": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%22120%2020%201080%201080%22%3E%3Cfilter%20id%3D%22rim%22%20x%3D%22-15%25%22%20y%3D%22-15%25%22%20width%3D%22130%25%22%20height%3D%22130%25%22%3E%3CfeMorphology%20in%3D%22SourceAlpha%22%20operator%3D%22dilate%22%20radius%3D%2216%22%20result%3D%22d%22/%3E%3CfeFlood%20flood-color%3D%22%23efe6ff%22/%3E%3CfeComposite%20in2%3D%22d%22%20operator%3D%22in%22%20result%3D%22r%22/%3E%3CfeMerge%3E%3CfeMergeNode%20in%3D%22r%22/%3E%3CfeMergeNode%20in%3D%22SourceGraphic%22/%3E%3C/feMerge%3E%3C/filter%3E%3Cg%20filter%3D%22url%28%23rim%29%22%3E%3Cpath%20d%3D%22M250%20980q-20-430%20120-640q130-190%20330-160q240%2040%20280%20330q20%20200%2010%20470l-70-40-60%2050-70-50-70%2050-70-50-70%2050-70-50-70%2050z%22%20fill%3D%22%23eef0ff%22%20stroke%3D%22%231b1030%22%20stroke-width%3D%2230%22%20stroke-linejoin%3D%22round%22%20stroke-linecap%3D%22round%22/%3E%3Cellipse%20cx%3D%22637.5%22%20cy%3D%22486.7%22%20rx%3D%2248%22%20ry%3D%2258%22%20fill%3D%22%231b1030%22/%3E%3Cellipse%20cx%3D%22772.6%22%20cy%3D%22486.7%22%20rx%3D%2248%22%20ry%3D%2258%22%20fill%3D%22%231b1030%22/%3E%3Cpath%20d%3D%22M560%20700q60%2030%20120%200%22%20fill%3D%22none%22%20stroke%3D%22%23c7cbe8%22%20stroke-width%3D%2212%22%20stroke-linecap%3D%22round%22/%3E%3C/g%3E%3C/svg%3E", "party": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%22120%2020%201080%201080%22%3E%3Cfilter%20id%3D%22rim%22%20x%3D%22-15%25%22%20y%3D%22-15%25%22%20width%3D%22130%25%22%20height%3D%22130%25%22%3E%3CfeMorphology%20in%3D%22SourceAlpha%22%20operator%3D%22dilate%22%20radius%3D%2216%22%20result%3D%22d%22/%3E%3CfeFlood%20flood-color%3D%22%23efe6ff%22/%3E%3CfeComposite%20in2%3D%22d%22%20operator%3D%22in%22%20result%3D%22r%22/%3E%3CfeMerge%3E%3CfeMergeNode%20in%3D%22r%22/%3E%3CfeMergeNode%20in%3D%22SourceGraphic%22/%3E%3C/feMerge%3E%3C/filter%3E%3Cg%20filter%3D%22url%28%23rim%29%22%3E%3Cpath%20d%3D%22M398.554%20818.914C316.315%201001.03%20491.477%201046.74%20620.672%20940.156C658.687%201059.66%20801.052%20970.473%20852.234%20877.795C964.787%20673.567%20919.318%20465.357%20907.64%20422.374C827.637%20129.443%20427.623%20128.946%20358.8%20423.865C342.651%20475.544%20342.402%20534.18%20333.458%20595.051C328.986%20625.86%20325.507%20645.488%20313.83%20677.785C306.873%20696.424%20297.68%20712.819%20282.773%20740.645C259.915%20783.881%20269.604%20867.113%20387.87%20823.883L399.051%20818.914H398.554Z%22%20fill%3D%22%23ffffff%22%20stroke%3D%22%231b1030%22%20stroke-width%3D%2244%22%20stroke-linejoin%3D%22round%22/%3E%3Cellipse%20cx%3D%22617.5%22%20cy%3D%22600%22%20rx%3D%2246%22%20ry%3D%2226%22%20fill%3D%22%23ff7a9c%22%20opacity%3D%220.6%22/%3E%3Cellipse%20cx%3D%22806.6%22%20cy%3D%22600%22%20rx%3D%2246%22%20ry%3D%2226%22%20fill%3D%22%23ff7a9c%22%20opacity%3D%220.6%22/%3E%3Cpath%20d%3D%22M636.123%20549.353C603.328%20549.353%20598.359%20510.097%20598.359%20486.742C598.359%20465.623%20602.086%20448.977%20609.293%20438.293C615.504%20428.852%20624.697%20424.131%20636.123%20424.131C647.555%20424.131%20657.492%20428.852%20664.447%20438.541C672.398%20449.474%20676.623%20466.12%20676.623%20486.742C676.623%20525.998%20661.471%20549.353%20636.375%20549.353H636.123Z%22%20fill%3D%22%231b1030%22/%3E%3Cpath%20d%3D%22M771.24%20549.353C738.445%20549.353%20733.477%20510.097%20733.477%20486.742C733.477%20465.623%20737.203%20448.977%20744.41%20438.293C750.621%20428.852%20759.814%20424.131%20771.24%20424.131C782.672%20424.131%20792.609%20428.852%20799.564%20438.541C807.516%20449.474%20811.74%20466.12%20811.74%20486.742C811.74%20525.998%20796.588%20549.353%20771.492%20549.353H771.24Z%22%20fill%3D%22%231b1030%22/%3E%3Cpath%20d%3D%22M652%20606q53%2082%20106%200Z%22%20fill%3D%22%231b1030%22/%3E%3Cpath%20d%3D%22M688%20648q17%2030%2034%200Z%22%20fill%3D%22%23ff7a9c%22/%3E%3Cpath%20d%3D%22M624%2060l120%20270H504z%22%20fill%3D%22%23a3e635%22%20stroke%3D%22%231b1030%22%20stroke-width%3D%2218%22%20stroke-linejoin%3D%22round%22%20stroke-linecap%3D%22round%22/%3E%3Cpath%20d%3D%22M560%20210l130%20-40M540%20270l180%20-50%22%20stroke%3D%22%239046ff%22%20stroke-width%3D%2218%22/%3E%3Ccircle%20cx%3D%22624%22%20cy%3D%2256%22%20r%3D%2238%22%20fill%3D%22%23ffd23f%22%20stroke%3D%22%231b1030%22%20stroke-width%3D%2214%22%20stroke-linejoin%3D%22round%22%20stroke-linecap%3D%22round%22/%3E%3Cg%20transform%3D%22translate%28900%20780%29%22%3E%3Cpath%20d%3D%22M-110%20-40q110%20-180%20220%200%22%20fill%3D%22none%22%20stroke%3D%22%231b1030%22%20stroke-width%3D%2220%22/%3E%3Cellipse%20cx%3D%22-50%22%20cy%3D%2240%22%20rx%3D%2280%22%20ry%3D%2296%22%20fill%3D%22%23e5600b%22%20stroke%3D%22%231b1030%22%20stroke-width%3D%2218%22%20stroke-linejoin%3D%22round%22%20stroke-linecap%3D%22round%22/%3E%3Cellipse%20cx%3D%2250%22%20cy%3D%2240%22%20rx%3D%2280%22%20ry%3D%2296%22%20fill%3D%22%23e5600b%22%20stroke%3D%22%231b1030%22%20stroke-width%3D%2218%22%20stroke-linejoin%3D%22round%22%20stroke-linecap%3D%22round%22/%3E%3Cellipse%20cx%3D%220%22%20cy%3D%2240%22%20rx%3D%2284%22%20ry%3D%22104%22%20fill%3D%22%23ff8a1f%22%20stroke%3D%22%231b1030%22%20stroke-width%3D%2218%22%20stroke-linejoin%3D%22round%22%20stroke-linecap%3D%22round%22/%3E%3Cpath%20d%3D%22M-46%2018l22%20-34%2022%2034zM10%2018l22%20-34%2022%2034z%22%20fill%3D%22%231b1030%22/%3E%3Cpath%20d%3D%22M-50%2066q50%2040%20100%200q-50%2020-100%200z%22%20fill%3D%22%231b1030%22/%3E%3Ccircle%20cx%3D%22-30%22%20cy%3D%22-58%22%20r%3D%2218%22%20fill%3D%22%239046ff%22%20stroke%3D%22%231b1030%22%20stroke-width%3D%2210%22%20stroke-linejoin%3D%22round%22%20stroke-linecap%3D%22round%22/%3E%3Ccircle%20cx%3D%2218%22%20cy%3D%22-66%22%20r%3D%2218%22%20fill%3D%22%23a3e635%22%20stroke%3D%22%231b1030%22%20stroke-width%3D%2210%22%20stroke-linejoin%3D%22round%22%20stroke-linecap%3D%22round%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"};
+  var img = {};
+  Object.keys(G).forEach(function (k) { var i = new Image(); i.src = G[k]; img[k] = i; });
+
+  var c = document.getElementById('c'), g = c.getContext('2d');
+  var W = 0, H = 0, DPR = 1, mode = 'dark', reduced = false, t0 = Date.now();
+  var P = {
+    dark: { sky: null, moon: '#ffe7a8', moonInk: '#3a2560', glow: 'rgba(255,231,168,', hill1: '#2a1d4a', hill2: '#231840',
+      star: '#fff4cf', sign: '#fff7ee', signInk: '#2b1a45', treat: '#5fa316', trick: '#d6336c', cloud: 'rgba(255,255,255,0)', bat: '#3b2a63', batEye: '#ffd23f', vine: '#4f8a2b' },
+    light: { sky: null, moon: '#fff1c9', moonInk: '#7a5a2a', glow: 'rgba(255,190,120,', hill1: '#ffd9b0', hill2: '#ffc993',
+      star: 'rgba(0,0,0,0)', sign: '#ffffff', signInk: '#2b1a45', treat: '#4d8a12', trick: '#c2255c', cloud: 'rgba(255,255,255,0.9)', bat: '#6a4aa8', batEye: '#ffd23f', vine: '#4f8a2b' }
+  };
+  var LIGHTS = ['#ff8a1f', '#a3e635', '#b98bff', '#ffd23f', '#ff7a9c', '#6fd3ff'];
+  var SIGNS = [
+    ['TREAT', 'green CI'], ['TRICK', 'flaky test'], ['TREAT', 'LGTM!'], ['TRICK', 'merge conflict'],
+    ['TREAT', '0 bugs'], ['TRICK', 'rate limit'], ['TREAT', 'shipped'], ['TRICK', 'works on my machine'],
+    ['TREAT', 'fast build'], ['TRICK', 'TODO: fix later'], ['TREAT', 'tests pass'], ['TRICK', 'it is DNS']
+  ];
+  var FACES = ['canon', 'wink', 'heart', 'sparkle', 'cat', 'grin'];
+  var WALKERS = ['vampire', 'cat', 'mummy', 'pirate', 'devil', 'sheet', 'party'];
+  var stars = [], bats = [], walkers = [], pops = [], clouds = [];
+
+  function rnd(a, b) { return a + Math.random() * (b - a); }
+  function size() {
+    DPR = Math.min(window.devicePixelRatio || 1, 2);
+    W = window.innerWidth; H = window.innerHeight;
+    c.width = W * DPR; c.height = H * DPR; g.setTransform(DPR, 0, 0, DPR, 0, 0);
+  }
+  function seed() {
+    for (var i = 0; i < 60; i++) stars.push({ x: Math.random(), y: Math.random() * 0.5, r: rnd(0.6, 1.6), p: rnd(0, 6.3) });
+    for (i = 0; i < 2; i++) bats.push({ x: Math.random(), y: rnd(0.15, 0.4), v: rnd(0.008, 0.015), p: rnd(0, 6.3) });
+    for (i = 0; i < 4; i++) clouds.push({ x: Math.random(), y: rnd(0.1, 0.35), s: rnd(0.7, 1.3), v: rnd(0.002, 0.005) });
+    for (i = 0; i < 2; i++) walkers.push(newWalker(i * 0.5));
+  }
+  function newWalker(x) {
+    return { x: x === undefined ? -0.08 : x, name: WALKERS[Math.floor(Math.random() * WALKERS.length)], v: rnd(0.005, 0.009), stop: -1, said: 0, p: rnd(0, 6.3) };
+  }
+
+  function patchY() { return H - Math.max(96, H * 0.15); }
+  // Pumpkins sit only at the two edges, outside the chat column.
+  var EDGE = [0.05, 0.15, 0.85, 0.95], EDGE_NARROW = [0.06, 0.94];
+  function pumpkinX(i, n) { return W * (n === 4 ? EDGE : EDGE_NARROW)[i]; }
+  function pumpkinCount() { return W < 1000 ? 2 : 4; }
+
+  function drawMoon(t, Q) {
+    var mx = W * 0.88, my = H * 0.17, r = Math.max(30, Math.min(W, H) * 0.055);
+    var gl = g.createRadialGradient(mx, my, r * 0.5, mx, my, r * 3);
+    gl.addColorStop(0, Q.glow + '0.35)'); gl.addColorStop(1, Q.glow + '0)');
+    g.fillStyle = gl; g.beginPath(); g.arc(mx, my, r * 3, 0, 6.283); g.fill();
+    g.fillStyle = Q.moon; g.beginPath(); g.arc(mx, my, r, 0, 6.283); g.fill();
+    // Kiro eyes + a smile; it blinks now and then.
+    var blink = (t % 8) > 7.85 ? 0.15 : 1;
+    g.fillStyle = Q.moonInk;
+    g.beginPath(); g.ellipse(mx - r * 0.22, my - r * 0.12, r * 0.09, r * 0.14 * blink, 0, 0, 6.283); g.fill();
+    g.beginPath(); g.ellipse(mx + r * 0.12, my - r * 0.12, r * 0.09, r * 0.14 * blink, 0, 0, 6.283); g.fill();
+    g.strokeStyle = Q.moonInk; g.lineWidth = Math.max(2, r * 0.07); g.lineCap = 'round';
+    g.beginPath(); g.arc(mx - r * 0.05, my + r * 0.12, r * 0.22, 0.2, Math.PI - 0.2); g.stroke();
+    g.fillStyle = 'rgba(255,122,156,0.5)';
+    g.beginPath(); g.ellipse(mx - r * 0.45, my + r * 0.12, r * 0.12, r * 0.07, 0, 0, 6.283); g.fill();
+    g.beginPath(); g.ellipse(mx + r * 0.38, my + r * 0.12, r * 0.12, r * 0.07, 0, 0, 6.283); g.fill();
+    return { mx: mx, my: my, r: r };
+  }
+
+  function drawBat(b, t, Q) {
+    var x = b.x * W, y = b.y * H + Math.sin(t * 0.8 + b.p) * 10, s = 10;
+    var f = Math.abs(Math.sin(t * 5 + b.p));
+    g.save(); g.translate(x, y); g.fillStyle = Q.bat;
+    g.beginPath(); g.moveTo(0, 0);
+    g.quadraticCurveTo(-s, -s * (0.3 + f), -s * 2.2, -s * 0.2 * f);
+    g.quadraticCurveTo(-s * 1.2, s * 0.3, 0, s * 0.4);
+    g.quadraticCurveTo(s * 1.2, s * 0.3, s * 2.2, -s * 0.2 * f);
+    g.quadraticCurveTo(s, -s * (0.3 + f), 0, 0); g.fill();
+    g.beginPath(); g.arc(0, s * 0.2, s * 0.6, 0, 6.283); g.fill();
+    g.fillStyle = '#fff'; g.beginPath(); g.arc(-3, 1, 2.6, 0, 6.283); g.arc(3, 1, 2.6, 0, 6.283); g.fill();
+    g.fillStyle = '#1b1030'; g.beginPath(); g.arc(-2.6, 1.4, 1.3, 0, 6.283); g.arc(3.4, 1.4, 1.3, 0, 6.283); g.fill();
+    g.restore();
+  }
+
+  function drawLights(t) {
+    var y0 = Math.max(54, H * 0.07), n = Math.max(8, Math.floor(W / 70)), sag = 22;
+    g.strokeStyle = 'rgba(120,90,160,0.55)'; g.lineWidth = 1.5;
+    g.beginPath();
+    for (var seg = 0; seg < 3; seg++) {
+      var a = seg * W / 3, b = (seg + 1) * W / 3;
+      g.moveTo(a, y0); g.quadraticCurveTo((a + b) / 2, y0 + sag * 2, b, y0);
+    }
+    g.stroke();
+    for (var i = 0; i < n; i++) {
+      var x = (i + 0.5) * W / n, segW = W / 3, k = (x % segW) / segW;
+      var y = y0 + 4 * sag * k * (1 - k) + 6;
+      var on = reduced ? 1 : 0.7 + 0.3 * Math.sin(t * 0.9 + i * 1.3);
+      var col = LIGHTS[i % LIGHTS.length];
+      g.globalAlpha = 0.25 * on; g.fillStyle = col; g.beginPath(); g.arc(x, y + 4, 12, 0, 6.283); g.fill();
+      g.globalAlpha = 0.6 + 0.4 * on; g.beginPath(); g.ellipse(x, y + 4, 4.5, 6.5, 0, 0, 6.283); g.fill();
+      g.globalAlpha = 1; g.fillStyle = '#4a3a66'; g.fillRect(x - 2.5, y - 4, 5, 4);
+    }
+  }
+
+  function drawPumpkin(x, y, s, face, t, i) {
+    var sq = reduced ? 1 : 1 + Math.sin(t * 1.2 + i) * 0.02;
+    g.save(); g.translate(x, y); g.scale(1 / sq, sq);
+    g.strokeStyle = '#3f7a1c'; g.lineWidth = s * 0.08; g.lineCap = 'round';
+    g.beginPath(); g.moveTo(0, -s * 0.48); g.quadraticCurveTo(s * 0.05, -s * 0.7, s * 0.2, -s * 0.72); g.stroke();
+    g.fillStyle = '#e5600b';
+    g.beginPath(); g.ellipse(-s * 0.3, 0, s * 0.42, s * 0.5, 0, 0, 6.283); g.fill();
+    g.beginPath(); g.ellipse(s * 0.3, 0, s * 0.42, s * 0.5, 0, 0, 6.283); g.fill();
+    g.fillStyle = '#ff8a1f'; g.beginPath(); g.ellipse(0, 0, s * 0.45, s * 0.54, 0, 0, 6.283); g.fill();
+    var flick = reduced ? 1 : 0.88 + 0.12 * Math.sin(t * 4 + i * 2);
+    g.fillStyle = 'rgba(255,' + Math.round(200 + 40 * flick) + ',80,1)';
+    var ex = s * 0.17, ey = -s * 0.1;
+    g.save();
+    if (face === 'heart') {
+      [-ex, ex].forEach(function (dx) {
+        g.beginPath(); g.moveTo(dx, ey + s * 0.1);
+        g.bezierCurveTo(dx - s * 0.14, ey, dx - s * 0.08, ey - s * 0.12, dx, ey - s * 0.04);
+        g.bezierCurveTo(dx + s * 0.08, ey - s * 0.12, dx + s * 0.14, ey, dx, ey + s * 0.1); g.fill();
+      });
+    } else if (face === 'wink') {
+      g.beginPath(); g.ellipse(-ex, ey, s * 0.06, s * 0.1, 0, 0, 6.283); g.fill();
+      g.lineWidth = s * 0.05; g.strokeStyle = g.fillStyle; g.beginPath(); g.arc(ex, ey + s * 0.04, s * 0.07, Math.PI + 0.3, -0.3); g.stroke();
+    } else {
+      g.beginPath(); g.ellipse(-ex, ey, s * 0.065, s * 0.105, 0, 0, 6.283); g.fill();
+      g.beginPath(); g.ellipse(ex, ey, s * 0.065, s * 0.105, 0, 0, 6.283); g.fill();
+      if (face === 'sparkle') { g.fillStyle = '#fff'; g.beginPath(); g.arc(ex + s * 0.1, ey - s * 0.12, s * 0.03, 0, 6.283); g.fill(); g.fillStyle = 'rgba(255,230,80,1)'; }
+    }
+    g.lineWidth = s * 0.05; g.strokeStyle = g.fillStyle; g.lineCap = 'round';
+    g.beginPath();
+    if (face === 'cat') { g.moveTo(-s * 0.12, s * 0.16); g.quadraticCurveTo(-s * 0.06, s * 0.24, 0, s * 0.16); g.quadraticCurveTo(s * 0.06, s * 0.24, s * 0.12, s * 0.16); g.stroke(); }
+    else if (face === 'grin') { g.moveTo(-s * 0.18, s * 0.12); g.quadraticCurveTo(0, s * 0.36, s * 0.18, s * 0.12); g.closePath(); g.fill(); }
+    else { g.arc(0, s * 0.08, s * 0.14, 0.3, Math.PI - 0.3); g.stroke(); }
+    g.restore();
+    g.restore();
+  }
+
+  function drawSign(x, y, s, sign, Q, t, i) {
+    var w = Math.max(84, s * 2.1), h = Math.max(36, s * 0.7);
+    var sway = reduced ? 0 : Math.sin(t * 0.7 + i) * 0.03;
+    g.save(); g.translate(x, y); g.rotate(sway);
+    g.strokeStyle = '#9c6b3a'; g.lineWidth = 3; g.beginPath(); g.moveTo(0, 0); g.lineTo(0, -s * 0.5); g.stroke();
+    g.translate(0, -s * 0.5 - h);
+    g.fillStyle = Q.sign; g.strokeStyle = sign[0] === 'TREAT' ? Q.treat : Q.trick; g.lineWidth = 2.5;
+    roundRect(-w / 2, 0, w, h, 8); g.fill(); g.stroke();
+    g.textAlign = 'center'; g.fillStyle = sign[0] === 'TREAT' ? Q.treat : Q.trick;
+    g.font = '700 ' + Math.round(h * 0.3) + 'px system-ui, sans-serif'; g.fillText(sign[0] === 'TREAT' ? 'TREAT!' : 'TRICK!', 0, h * 0.4);
+    g.fillStyle = Q.signInk; var fs = Math.round(h * 0.28);
+    g.font = '600 ' + fs + 'px system-ui, sans-serif';
+    while (g.measureText(sign[1]).width > w - 10 && fs > 8) { fs--; g.font = '600 ' + fs + 'px system-ui, sans-serif'; }
+    g.fillText(sign[1], 0, h * 0.8);
+    g.restore();
+  }
+  function roundRect(x, y, w, h, r) {
+    g.beginPath(); g.moveTo(x + r, y); g.arcTo(x + w, y, x + w, y + h, r); g.arcTo(x + w, y + h, x, y + h, r);
+    g.arcTo(x, y + h, x, y, r); g.arcTo(x, y, x + w, y, r); g.closePath();
+  }
+
+  function drawGhost(name, x, y, h, flip, tilt) {
+    var im = img[name]; if (!im || !im.complete || !im.naturalWidth) return;
+    g.save(); g.translate(x, y); if (tilt) g.rotate(tilt); if (flip) g.scale(-1, 1);
+    g.drawImage(im, -h / 2, -h, h, h); g.restore();
+  }
+
+  function bubble(x, y, text, Q) {
+    g.font = '700 12px system-ui, sans-serif'; var w = g.measureText(text).width + 16;
+    g.fillStyle = Q.sign; g.strokeStyle = '#ff8a1f'; g.lineWidth = 2;
+    roundRect(x - w / 2, y - 24, w, 22, 10); g.fill(); g.stroke();
+    g.fillStyle = Q.signInk; g.textAlign = 'center'; g.fillText(text, x, y - 9);
+  }
+
+  function frame() {
+    var t = (Date.now() - t0) / 1000, Q = P[mode] || P.dark, i;
+    g.clearRect(0, 0, W, H);
+    if (mode === 'dark') {
+      g.fillStyle = Q.star;
+      for (i = 0; i < stars.length; i++) {
+        var s = stars[i]; g.globalAlpha = 0.45 + 0.55 * Math.abs(Math.sin(t * 0.35 + s.p));
+        g.beginPath(); g.arc(s.x * W, s.y * H, s.r, 0, 6.283); g.fill();
+      }
+      g.globalAlpha = 1;
+    } else {
+      for (i = 0; i < clouds.length; i++) {
+        var cl = clouds[i]; if (!reduced) { cl.x += cl.v / 30; if (cl.x > 1.2) cl.x = -0.2; }
+        var cx = cl.x * W, cy = cl.y * H, r = 22 * cl.s; g.fillStyle = Q.cloud;
+        g.beginPath(); g.arc(cx, cy, r, 0, 6.283); g.arc(cx + r, cy - r * 0.4, r * 1.1, 0, 6.283); g.arc(cx + r * 2.1, cy, r * 0.9, 0, 6.283); g.fill();
+      }
+    }
+    var moon = drawMoon(t, Q);
+    drawLights(t);
+
+    // A witch Crew mate flies past the moon every 24s.
+    var fp = (t % 60) / 12;
+    if (!reduced && fp < 1) {
+      var fx = W * (1.1 - fp * 1.3), fy = moon.my + Math.sin(fp * 6.28) * 30 - 10;
+      drawGhost('witch', fx, fy + 40, Math.max(70, moon.r * 1.8), true, -0.2);
+    }
+
+    for (i = 0; i < bats.length; i++) {
+      var b = bats[i]; if (!reduced) { b.x += b.v / 30; if (b.x > 1.1) { b.x = -0.1; b.y = rnd(0.15, 0.4); } }
+      drawBat(b, t, Q);
+    }
+
+    // Hills.
+    var base = patchY();
+    g.fillStyle = Q.hill2;
+    g.beginPath(); g.moveTo(0, H); g.lineTo(0, base - 30); g.quadraticCurveTo(W * 0.3, base - 70, W * 0.6, base - 30); g.quadraticCurveTo(W * 0.85, base - 5, W, base - 40); g.lineTo(W, H); g.fill();
+    g.fillStyle = Q.hill1;
+    g.beginPath(); g.moveTo(0, H); g.lineTo(0, base + 10); g.quadraticCurveTo(W * 0.5, base - 20, W, base + 10); g.lineTo(W, H); g.fill();
+
+    // Pumpkin patch: carved Crew faces, signs flip between trick and treat.
+    var n = pumpkinCount(), ps = Math.max(38, Math.min(62, W / 24));
+    g.strokeStyle = Q.vine; g.lineWidth = 3;
+    g.beginPath(); g.moveTo(0, base + ps * 0.4); g.quadraticCurveTo(W * 0.1, base + ps * 0.7, W * 0.2, base + ps * 0.4);
+    g.moveTo(W, base + ps * 0.4); g.quadraticCurveTo(W * 0.9, base + ps * 0.7, W * 0.8, base + ps * 0.4); g.stroke();
+    var page = Math.floor(t / 15);
+    for (i = 0; i < n; i++) {
+      var px = pumpkinX(i, n), py = base + ps * 0.1;
+      drawSign(px, py - ps * 0.45, ps * 0.8, SIGNS[(i + page) % SIGNS.length], Q, t, i);
+      drawPumpkin(px, py, ps, FACES[i % FACES.length], t, i);
+    }
+
+    // Trick-or-treaters: walk, stop at a pumpkin, get candy, walk on.
+    for (i = 0; i < walkers.length; i++) {
+      var w = walkers[i], gh = Math.max(60, ps * 1.35);
+      if (!reduced) {
+        if (w.stop > 0) { w.stop -= 1 / 30; if (w.stop <= 0) w.stop = -1; }
+        else {
+          w.x += (w.x > 0.22 && w.x < 0.78 ? 4 : 1) * w.v / 30;
+          for (var k = 0; k < n; k++) {
+            var dx = Math.abs(w.x * W - (pumpkinX(k, n) - ps * 0.9));
+            if (dx < 1.2 && w.said !== k + 1 && Math.random() < 0.6) {
+              w.stop = 3.5; w.said = k + 1;
+              pops.push({ x: pumpkinX(k, n), y: base, vx: rnd(-1.5, -0.5), vy: -5.5, life: 1.6, c: LIGHTS[Math.floor(Math.random() * LIGHTS.length)] });
+            }
+          }
+          if (w.x > 1.08) walkers[i] = newWalker();
+        }
+      }
+      var hop = w.stop > 0 ? 0 : Math.abs(Math.sin(t * 2.8 + w.p)) * 6;
+      var wx = w.x * W, wy = H - 6 - hop;
+      if (w.x > 0.22 && w.x < 0.78) continue; // behind the chat column: stay out of the way
+      drawGhost(w.name, wx, wy, gh, false, w.stop > 0 ? 0 : Math.sin(t * 2.8 + w.p) * 0.04);
+      if (w.stop > 1.8) bubble(wx, wy - gh, 'Trick or treat!', Q);
+      else if (w.stop > 0) bubble(wx, wy - gh, 'Yum, candy!', Q);
+    }
+
+    // Candy pops arcing out of pumpkins.
+    for (i = pops.length - 1; i >= 0; i--) {
+      var p = pops[i]; p.x += p.vx; p.y += p.vy; p.vy += 0.25; p.life -= 1 / 30;
+      g.save(); g.translate(p.x, p.y); g.rotate(p.life * 6); g.fillStyle = p.c;
+      g.fillRect(-7, -4, 14, 8); g.beginPath(); g.moveTo(-7, 0); g.lineTo(-12, -5); g.lineTo(-12, 5); g.fill();
+      g.beginPath(); g.moveTo(7, 0); g.lineTo(12, -5); g.lineTo(12, 5); g.fill(); g.restore();
+      if (p.life <= 0) pops.splice(i, 1);
+    }
+  }
+
+  var last = 0;
+  function loop(now) {
+    if (!reduced && !document.hidden && now - last > 33) { last = now; frame(); }
+    window.requestAnimationFrame(loop);
+  }
+  window.addEventListener('message', function (e) {
+    var d = e.data || {};
+    if (d.type === 'theme:state') {
+      if (d.mode === 'light' || d.mode === 'dark') mode = d.mode;
+      reduced = !!d.reducedMotion; frame();
+    }
+  });
+  window.addEventListener('resize', function () { size(); frame(); });
+  Object.keys(img).forEach(function (k) { img[k].onload = frame; });
+  size(); seed(); frame(); window.requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>
